@@ -1,5 +1,7 @@
-package com.exemple.crudjavaapi.blog;
+package com.exemple.crudjavaapi.controllers;
 
+import com.exemple.crudjavaapi.entities.Blog;
+import com.exemple.crudjavaapi.repositories.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -29,9 +31,9 @@ public class BlogController {
         throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Aucun article disponible");
     }
 
-    @BlogMapping
+    @PostMapping
     public Blog createBlog(@RequestBody Blog blog) {
-        return blogRepository.save(Blog);
+        return blogRepository.save(blog);
     }
 
     @PutMapping("/{id}")
